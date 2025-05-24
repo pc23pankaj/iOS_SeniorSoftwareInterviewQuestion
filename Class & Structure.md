@@ -67,4 +67,67 @@ student4 grade: 8
 ```
 
 
+### Benefits of Struct vs Class in Swift
 
+| Feature             | `struct` (Value Type)                            | `class` (Reference Type)                          |
+| ------------------- | ------------------------------------------------ | ------------------------------------------------- |
+| **Memory Model**    | Stored on the stack (efficient)                  | Stored on the heap (with reference counting)      |
+| **Performance**     | Faster for small/lightweight objects             | Better for complex/shared objects                 |
+| **Thread-Safe**     | Yes (copied on assignment → no shared state)     | No (shared state requires synchronization)        |
+| **Mutability**      | Immutable by default (`mutating` keyword needed) | Mutable by default                                |
+| **Inheritance**     | ❌ Not supported                                  | ✅ Supports single inheritance                     |
+| **Use Case**        | Use for data models, value semantics             | Use for objects with identity and shared behavior |
+| **ARC Involvement** | ❌ Not managed by ARC                             | ✅ Managed by ARC (Automatic Reference Counting)   |
+
+
+
+**✅ What is a Class Function in Swift?**
+   - In Swift, a class function is a method that belongs to the class itself (not an instance) and can be overridden by a subclass.
+```swift
+class Animal {
+    class func sound() {
+        print("Animal sound")
+    }
+}
+
+class Dog: Animal {
+    override class func sound() {
+        print("Bark")
+    }
+}
+```
+
+**✅ What is static function in swift ?**
+- A static function in Swift is a type method that belongs to the type itself (not to any instance) and cannot be overridden by subclasses (if used in a class).
+
+```
+struct MathUtils {
+    static func square(of number: Int) -> Int {
+        return number * number
+    }
+}
+
+// Usage
+let result = MathUtils.square(of: 5)
+print(result)  // Output: 25
+```
+```
+class MyClass {
+    static func greet() {
+        print("Hello from MyClass!")
+    }
+}
+
+// Usage
+MyClass.greet()
+
+```
+🔁 If you want a method that can be overridden in subclasses, use class func instead of static func.
+
+**Difference between Class Function vs Static Function**
+| Feature         | `static func`                                | `class func`                          |
+| --------------- | -------------------------------------------- | ------------------------------------- |
+| **Overridable** | ❌ Cannot be overridden in subclass           | ✅ Can be overridden in subclass       |
+| **Binding**     | Bound at compile time                        | Dynamically dispatched                |
+| **Used In**     | Structs, Enums, and Classes                  | Only in Classes                       |
+| **Purpose**     | Utility methods that shouldn’t be overridden | Allow polymorphism at the class level |
