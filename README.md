@@ -362,3 +362,16 @@ Now you can inject MockEngine() for unit tests.
 - Clean Architecture Supports SOLID principles
 
 
+**8. Can you compare Class vs Structure in Swift using just 4 key points:**
+**Answer**
+## Class vs Structure in Swift
+
+| Feature        | Class                                  | Struct                                  |
+|----------------|-----------------------------------------|------------------------------------------|
+| **Type**       | Reference type                          | Value type                               |
+| **Inheritance**| Supports inheritance                    | Does not support inheritance             |
+| **Memory**     | Stored in heap (shared reference)       | Stored in stack (copied on assignment)   |
+| **Initializer**| Requires manual initializer             | Gets default memberwise initializer      |
+
+
+
