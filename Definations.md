@@ -111,3 +111,10 @@ Obj-c
 ```
 CFGetRetainCount(object);
 ```
+
+### Q. What is KVC and KVO? Give an example of using KVC to set a value.
+- **KVC stands for Key-Value Coding.** It's a mechanism by which an object's properties can be accessed using string's at runtime rather than having to statically know the property names at development time. 
+- **KVO stands for Key-Value Observing Key-value** observing is a mechanism that enables an object to be notified directly when a property of another object changes.
+
+### Q. Lazy 
+- A **lazy** stored property is a property whose initial value isn't calculated until the first time it's used. ... You must always declare a lazy property as a variable (with the var keyword), because its initial value might not be retrieved until after instance initialization completes.
