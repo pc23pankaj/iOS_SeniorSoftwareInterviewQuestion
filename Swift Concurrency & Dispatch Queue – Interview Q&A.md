@@ -122,3 +122,82 @@ DispatchQueue.global().async {
 - **Work Stealing and Load Balancing:** GCD uses work stealing to balance the load between threads. If one thread finishes its tasks early, it can "steal" tasks from busier threads to keep all cores busy.
 - **Quality of Service (QoS) Influences Scheduling:** Tasks with higher QoS get preference on CPU time and resource allocation.
 - **Context Switching Managed by System:** The OS handles context switching between threads to efficiently share CPU time when there are more tasks than available cores.
+
+
+### Q12. ✅ What is DispatchWorkItem?
+- **DispatchWorkItem** is a wrapper for a block of code that can be dispatched to a queue. It allows you to manage, cancel, and monitor the execution of that block more flexibly than simply using DispatchQueue.async.
+
+## 🔧 Why Use DispatchWorkItem?
+You use DispatchWorkItem when you need:
+    - Cancelable tasks
+    - Reusability
+    - Notification when task completes
+    - Barrier control in concurrent queues
+    - Pre-configured blocks to be dispatched later
+    
+**🧠 Basic Syntax:**
+```
+let workItem = DispatchWorkItem {
+    print("Task is running")
+}
+
+DispatchQueue.global().async(execute: workItem)
+```
+>**🧪 Example 1: Canceling a Task**
+```
+let task = DispatchWorkItem {
+    for i in 0..<10 {
+        if task.isCancelled { return }
+        print(i)
+    }
+}
+
+DispatchQueue.global().async(execute: task)
+
+// Cancel it after 0.1s
+DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
+    task.cancel()
+}
+```
+>**🧪 Example 2: Notify When Finished**
+```
+let workItem = DispatchWorkItem {
+    // Long running task
+    sleep(2)
+    print("Finished task")
+}
+
+DispatchQueue.global().async(execute: workItem)
+
+workItem.notify(queue: .main) {
+    print("Update UI now!")
+}
+```
+
+>**🧪 Example 3: Delayed Dispatch**
+```
+let delayedItem = DispatchWorkItem {
+    print("Executed after delay")
+}
+
+DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: delayedItem)
+```
+
+## 🚨 When to Use DispatchWorkItem
+
+| Use Case                                      | Prefer `DispatchWorkItem` Over |
+| --------------------------------------------- | ------------------------------ |
+| You need to cancel work                       | `DispatchQueue.async {}`       |
+| You want to observe completion                | Simple GCD block               |
+| You want delayed dispatch with cancel support | `asyncAfter`                   |
+| You want more control over execution          | Traditional GCD blocks         |
+
+
+## 🔚 Summary
+DispatchWorkItem gives more control than plain GCD blocks:
+Cancelable
+Notifiable
+Reusable
+Monitored
+Perfect for tasks that are potentially long-running, UI-related, or need to be canceled or delayed with precision.
+
