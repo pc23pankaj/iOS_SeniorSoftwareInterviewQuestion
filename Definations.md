@@ -1,6 +1,25 @@
 # ✅ Swift Core Concepts & Memory Management
 
 ---
+## Static 
+**🔍 In Detail**
+- When you mark something as static, it means you access it using the type name, not an object created from the type.
+- It is shared across all instances (if any exist at all).
+- Commonly used for constants, counters, configuration values, or utility methods.
+  
+> static means the property or method is shared and does not require an instance. It’s a type-level member.
+
+### 📌 static vs class (for reference)
+**static** — works for structs, enums, and classes.
+**class** — only for classes and can be overridden in subclasses:
+
+| Keyword      | Mutable?             | Value Can Be Changed? | Thread-Safe? (By default)                        |
+| ------------ | ---------------------| --------------------- | ---------------------------------------------    |
+| `static let` | ❌ No   (read Only)  | ❌ No                | ✅ Yes (because it's constant)                   |
+| `static var` | ✅ Yes  (read/write) | ✅ Yes               | ❌ No (needs protection in multithreaded code)   |
+
+
+
 
 ## 🔁 Generic
 **Generic** allows you to write flexible, reusable functions and types that work with any data type.
