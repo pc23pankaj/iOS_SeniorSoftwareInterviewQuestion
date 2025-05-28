@@ -2,6 +2,11 @@
 
 - Dependency Injection (DI) is a design pattern used to provide objects (dependencies) that a class needs, rather than creating them inside the class itself.
 
+> Or you can also say:
+
+- Dependency Injection is a design pattern achieved by designing your code in a way that your objects or functions receive the objects they depend on, instead of creating their own.
+
+
 **🚀 Why Use Dependency Injection?**
 - ✅ Improves testability (e.g., mock dependencies in unit tests)
 - ✅ Promotes loose coupling between components
