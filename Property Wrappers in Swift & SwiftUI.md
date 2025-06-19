@@ -4,6 +4,33 @@
 
 - A property wrapper is a generic structure that encapsulates read and write access to a property and adds additional behavior to it.
 - They are used to reduce boilerplate and reuse logic by wrapping property behavior in a reusable type.
+```
+@propertyWrapper
+struct Capitalized {
+    private var value: String = ""
+
+    var wrappedValue: String {
+        get { value }
+        set { value = newValue.capitalized }
+    }
+
+    var projectedValue: String {
+        return value.uppercased()
+    }
+}
+
+struct Person {
+    @Capitalized var name: String
+}
+
+var p = Person(name: "john doe")
+print(p.name)         // John Doe
+print(p.$name)        // JOHN DOE
+
+```
+- The use of **get** and **set** in a property wrapper is essential because it defines how Swift should:
+- Retrieve the value of your property (get)
+- Assign a new value to your property (set)
 
 
 ## **🔹 2. What is a Property Wrapper in SwiftUI?**
