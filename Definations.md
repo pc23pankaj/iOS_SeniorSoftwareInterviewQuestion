@@ -125,6 +125,12 @@ Non-Atomic properties are not thread-safe, meaning multiple threads can read/wri
 ### 🧮 Retain Count
 
 Retain Count is the number of strong references to an object. When it drops to zero, the object is deallocated.
+### Q. What’s retain cycle how you can avoid
+**Ans.** Retain cycle is a memory management issue where objects reference each other and cannot be released. It can be avoided by using weak or unowned references.
+- Retain cycle occurs when two or more objects hold strong references to each other.
+- To avoid retain cycle, use weak or unowned references instead of strong references.
+- Weak references do not increase the reference count of an object and automatically become nil when the object is deallocated.
+- Unowned references are similar to weak references but are assumed to always have a value and do not become nil when the object is deallocated.
 
 Obj-c 
 ```
