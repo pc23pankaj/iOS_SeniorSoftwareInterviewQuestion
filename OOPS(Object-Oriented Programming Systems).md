@@ -123,3 +123,19 @@ Cat meows
 | Compile-time          | At compile time   | Method overloading (by parameter types)  | `add(a: Int, b: Int)` vs `add(a: Double)` |
 | Runtime               | At runtime        | Method overriding / Protocol conformance | `animal.speak()` calls overridden method  |
 
+
+## Key Differences between OOPS and POP (Protocol Oriented Programing) & Why POP Matters?
+| Aspect                 | OOP (Class‑based)             | POP (Protocol‑based)                         |
+| ---------------------- | ----------------------------- | -------------------------------------------- |
+| Inheritance vs. Mix‑in | Single inheritance tree       | “Mix and match” behavior from many protocols |
+| Reference vs. Value    | Reference semantics 📌        | Encourages value semantics (structs) ✔️      |
+| Code Sharing           | Class hierarchies, overrides  | Protocol extensions                          |
+| Coupling               | Tighter (superclass→subclass) | Looser (types just conform)                  |
+
+## Conclusion
+Swift fully supports OOP, so you can use classes, inheritance, and polymorphism when you need reference semantics or UIKit/AppKit patterns.
+Swift’s design strongly encourages POP, leveraging protocols, extensions, and value types to build safer, more composable, and testable code.
+In practice you’ll often blend both:
+Use protocols + structs for your core data/business logic (POP).
+Use classes + inheritance where you need identity, UIKit interoperability, or to model inherently reference‑type concepts (OOP).
+
