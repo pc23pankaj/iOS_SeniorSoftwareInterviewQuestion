@@ -11,11 +11,12 @@ This repository contains a collection of Swift interview questions that cover va
 ## 2. **What is Closures ?**
  **Answer :**
 Closures are self-contained blocks of functionality that can be passed around and used in your code. Closures in Swift are similar to blocks in C and Objective-C and lambdas in other programming languages.
-
+```
 Syntax of closure
 let greeting = { (name: String) -> String in
     return "Hello, \(name)!"
 }
+```
 
 ## 3. Type of closure?**
 **Answer :**
@@ -27,13 +28,13 @@ Based on Capturing Strategy
 ## 4. Why [weak self] is used in closure?**
 **Answer :**
 [weak self] is a capture list used in closures to avoid strong reference cycles (retain cycles), especially when referencing self inside the closure.
-
+```
 Syntax for denoting [weak self]:
 
 someFunctionWithClosure { [weak self] in
     self?.doSomething()
 }
-
+```
 What it does:
 - [weak self] makes self a weak reference inside the closure.
 - It becomes an optional (self?), so you need to safely unwrap it before using it.
@@ -44,7 +45,7 @@ What it does:
 A trailing closure is a special syntax that allows you to write a closure outside of the parentheses if it's the last argument to a function.
 
 - Let suppose we a function name 'perform' is a function that takes a closure as a parameter. The closure is named action and action takes no parameters and returns nothing (Void). Inside perform, the closure is called using action().
-  
+```
 func perform(action: () -> Void) {
     action()
 }
@@ -59,7 +60,8 @@ perform({
     print("Doing something")
 })
 
-</br> Summary  </br> 
+</br> Summary  </br>
+```
 () -> Void means a closure that takes no parameters and returns nothing.
 You can pass inline closure code to a function like perform.
 If the closure is the last or only parameter, you can use trailing closure syntax to improve readability.
