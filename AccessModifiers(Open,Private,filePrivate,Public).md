@@ -1,10 +1,10 @@
-# Open Vs Public:
+## Open Vs Public:
 
 * Public does not allow a class to be inherited in another module/target whereas Open does.
 * Public method does not allow to be overridden in subclass in another module/target whereas Open does.
 Apart from above both are same.
 
-Private Vs Fileprivate:
+## Private Vs Fileprivate:
 * (Within single file) Private does not allow to access (func and properties) in subclass whereas FilePrivate does.
 * (Outside File) Private and FilePrivate both can't be accessible.
 
