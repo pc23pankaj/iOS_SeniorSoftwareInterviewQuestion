@@ -61,7 +61,7 @@ AVFoundation handles decryption and playback.
 - ✅ SVP ensures that decrypted video is never accessible in memory, instead passing through a trusted hardware pipeline to the display.
 
 ### ❓ How does DRM prevent screen recording?
-- DRM systems enforce OS-level restrictions using HDCP, display restrictions, or hardware playback paths to block or distort content during screen recording.
+- DRM systems enforce OS-level restrictions using HDCP(High-bandwidth Digital Content Protection) is one mechanism used to achieve this., display restrictions, or hardware playback paths to block or distort content during screen recording.
 
 ### ❓ How is offline playback protected?
 - The license is stored securely on the device (encrypted) and has strict expiry, usage, and device-binding policies enforced by DRM.
