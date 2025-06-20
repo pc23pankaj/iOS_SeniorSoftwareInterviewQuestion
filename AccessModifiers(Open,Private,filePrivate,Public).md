@@ -22,3 +22,6 @@ File-private access only in class and its extension & subClass(When extension or
 | `internal`    | Default – accessible anywhere **within the same module**                     |
 | `fileprivate` | Accessible **only within the same source file**                              |
 | `private`     | Accessible **only within the enclosing scope** (like class/struct/extension) |
+
+✅ "Overridable" means:
+You can override a method or property in a subclass (i.e., provide your own implementation that replaces the parent’s version).
