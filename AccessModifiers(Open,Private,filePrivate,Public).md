@@ -13,3 +13,12 @@ Private access only in class and its extension(When extension is in the same .sw
 
 File Private
 File-private access only in class and its extension & subClass(When extension or subClass is in the same .swift file).
+
+
+| Access Level  | Scope Description                                                            |
+| ------------- | ---------------------------------------------------------------------------- |
+| `open`        | Most permissive – accessible **and overridable** outside the module          |
+| `public`      | Accessible **but not overridable** outside the module                        |
+| `internal`    | Default – accessible anywhere **within the same module**                     |
+| `fileprivate` | Accessible **only within the same source file**                              |
+| `private`     | Accessible **only within the enclosing scope** (like class/struct/extension) |
