@@ -143,3 +143,12 @@ CFGetRetainCount(object);
 
 ### Q. Lazy 
 - A **lazy** stored property is a property whose initial value isn't calculated until the first time it's used. ... You must always declare a lazy property as a variable (with the var keyword), because its initial value might not be retrieved until after instance initialization completes.
+
+
+### Q. typealias
+-A **typealias** is a keyword used to define an alias or alternative name for an existing type.
+✅ Purpose of typealias
+Improves readability of complex types.
+Provides abstraction or semantic meaning to a type.
+Helps shorten long generic or closure types.
+
