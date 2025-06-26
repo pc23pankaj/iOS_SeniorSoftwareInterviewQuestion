@@ -131,3 +131,34 @@ MyClass.greet()
 | **Binding**     | Bound at compile time                        | Dynamically dispatched                |
 | **Used In**     | Structs, Enums, and Classes                  | Only in Classes                       |
 | **Purpose**     | Utility methods that shouldn’t be overridden | Allow polymorphism at the class level |
+
+
+## 3. Actor (Introduced in Swift 5.5, for concurrency)
+**Reference type**
+**Thread-safe:** only 1 task accesses an actor’s data at a time
+Great for managing state in concurrent environments
+Cannot inherit from other classes/actors
+```
+🔸 Example:
+actor Counter {
+    var value = 0
+    func increment() {
+        value += 1
+    }
+}
+```
+✅ Use Actor when:
+You need to protect mutable state across threads
+You want built-in synchronization
+You're working with Swift Concurrency
+
+## Actors
+| Feature           | `Struct`         | `Class`         | `Actor`          |
+| ----------------- | ---------------- | --------------- | ---------------- |
+| Type              | Value type       | Reference type  | Reference type   |
+| Thread-safe       | ✅ Yes            | ❌ No            | ✅ Yes (isolated) |
+| Inheritance       | ❌ No             | ✅ Yes           | ❌ No             |
+| Stored in         | Stack            | Heap            | Heap             |
+| Memory Management | Automatic (copy) | ARC             | ARC              |
+| Use for           | Small models     | Complex objects | Concurrent state |
+
