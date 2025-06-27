@@ -114,3 +114,71 @@ apiService.fetchData(from: userAPI) { (result: Result<User, Error>) in
 * You can use this service to fetch any Codable model by specifying the type in the completion handler.
 
 ---
+
+
+Sure! Here's a simple example of how you might write a **unit test case for a login function** in Swift using `XCTest`.
+
+---
+
+### Example Setup:
+
+Let's say you have a simple `LoginManager` class with a method to validate login credentials.
+
+```swift
+class LoginManager {
+    func login(username: String, password: String) -> Bool {
+        // Simple validation logic (for example purpose)
+        return username == "user" && password == "password123"
+    }
+}
+```
+
+---
+
+### Writing the Test Case
+
+1. Import XCTest
+2. Create a test class inheriting from `XCTestCase`
+3. Write test methods using assertions
+
+```swift
+import XCTest
+@testable import YourAppModuleName  // Replace with your actual module name
+
+class LoginManagerTests: XCTestCase {
+    
+    var loginManager: LoginManager!
+    
+    override func setUp() {
+        super.setUp()
+        loginManager = LoginManager()
+    }
+    
+    override func tearDown() {
+        loginManager = nil
+        super.tearDown()
+    }
+    
+    func testLoginWithValidCredentials() {
+        let result = loginManager.login(username: "user", password: "password123")
+        XCTAssertTrue(result, "Login should succeed with valid credentials")
+    }
+    
+    func testLoginWithInvalidUsername() {
+        let result = loginManager.login(username: "wrongUser", password: "password123")
+        XCTAssertFalse(result, "Login should fail with invalid username")
+    }
+    
+    func testLoginWithInvalidPassword() {
+        let result = loginManager.login(username: "user", password: "wrongPassword")
+        XCTAssertFalse(result, "Login should fail with invalid password")
+    }
+    
+    func testLoginWithEmptyCredentials() {
+        let result = loginManager.login(username: "", password: "")
+        XCTAssertFalse(result, "Login should fail with empty credentials")
+    }
+}
+```
+
+---
