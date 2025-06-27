@@ -1,3 +1,39 @@
+### //Two Sum Problem. Find all the pairs from ana given array which sum is equal to target.
+```
+let inputArray = [2, 3, 4, 3, 4, 1, 6, 6, 6, 7, 5, 9, 1, 8, 9, 1, 1, 8, 9]
+let target = 10
+
+
+func finalApproach(input: [Int], sum: Int) {
+    var sortedArray = input.sorted()
+    var left = 0
+    var right = sortedArray.count - 1
+    
+    while (left < right) {
+        if left != 0 && sortedArray[left] == sortedArray[left - 1] {
+            left = left + 1
+            continue
+        }
+        
+        let s = sortedArray[left] + sortedArray[right]
+        if s == sum {
+            print(" (\(sortedArray[left]), \(sortedArray[right]))")
+            left = left + 1
+            right = right - 1
+        }
+        else if s > sum {
+            right = right - 1
+        }
+        else {
+            left = left - 1
+        }
+    }
+}
+
+finalApproach(input: inputArray, sum:target)
+```
+
+
 ## Q. Short an array and remove duplicates from it?
 
 ```
