@@ -665,4 +665,149 @@ printDiagonals(matrix: square)
 
 ---
 
+### ✅ 1. **Right-Angled Triangle**
+
+```
+*
+**
+***
+****
+*****
+```
+
+```swift
+func rightAngledTriangle(rows: Int) {
+    for i in 1...rows {
+        for _ in 1...i {
+            print("*", terminator: "")
+        }
+        print()
+    }
+}
+
+rightAngledTriangle(rows: 5)
+```
+
+---
+
+### ✅ 2. **Inverted Triangle**
+
+```
+*****
+****
+***
+**
+*
+```
+
+```swift
+func invertedTriangle(rows: Int) {
+    for i in stride(from: rows, to: 0, by: -1) {
+        for _ in 1...i {
+            print("*", terminator: "")
+        }
+        print()
+    }
+}
+
+invertedTriangle(rows: 5)
+```
+
+---
+
+### ✅ 3. **Right-Aligned Triangle**
+
+```
+    *
+   **
+  ***
+ ****
+*****
+```
+
+```swift
+func rightAlignedTriangle(rows: Int) {
+    for i in 1...rows {
+        for _ in 0..<(rows - i) {
+            print(" ", terminator: "")
+        }
+        for _ in 1...i {
+            print("*", terminator: "")
+        }
+        print()
+    }
+}
+
+rightAlignedTriangle(rows: 5)
+```
+
+---
+
+### ✅ 4. **Pyramid Pattern**
+
+```
+    *
+   ***
+  *****
+ *******
+*********
+```
+
+```swift
+func pyramid(rows: Int) {
+    for i in 1...rows {
+        for _ in 1...(rows - i) {
+            print(" ", terminator: "")
+        }
+        for _ in 1...(2 * i - 1) {
+            print("*", terminator: "")
+        }
+        print()
+    }
+}
+
+pyramid(rows: 5)
+```
+
+---
+
+### ✅ 5. **Diamond Pattern**
+
+```
+    *
+   ***
+  *****
+   ***
+    *
+```
+
+```swift
+func diamond(rows: Int) {
+    // Top half
+    for i in 1...rows {
+        for _ in 1...(rows - i) {
+            print(" ", terminator: "")
+        }
+        for _ in 1...(2 * i - 1) {
+            print("*", terminator: "")
+        }
+        print()
+    }
+    // Bottom half
+    for i in stride(from: rows - 1, to: 0, by: -1) {
+        for _ in 1...(rows - i) {
+            print(" ", terminator: "")
+        }
+        for _ in 1...(2 * i - 1) {
+            print("*", terminator: "")
+        }
+        print()
+    }
+}
+
+diamond(rows: 3)
+```
+
+---
+
 
