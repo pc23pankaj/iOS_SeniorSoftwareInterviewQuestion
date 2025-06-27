@@ -48,18 +48,19 @@ print(p.$name)        // JOHN DOE
 | `@Binding`                      | Refers to value type data owned by a different view. Changing it updates the original data. | ❌ No      |
 | `@State`                        | Stores local, small amounts of value type data within a view.                               | ✅ Yes     |
 | `@Environment`                  | Reads data from the system (e.g. color scheme, accessibility) or custom keys.               | ❌ No      |
-| `@EnvironmentObject`            | Reads shared objects injected into the environment.                                         | ❌ No      |
+| `@EnvironmentObject`            | Reads shared objects injected into the environment. OR Inject shared object from environment (used for global models)| ❌ No      |
 | `@FetchRequest`                 | Starts a Core Data fetch request for a particular entity.                                   | ✅ Yes     |
 | `@FocusedBinding`               | Watches values in the key window, e.g., selected text fields.                               | ❌ No      |
 | `@FocusedValue`                 | A simpler version of `@FocusedBinding` without automatic unwrapping.                        | ❌ No      |
 | `@GestureState`                 | Temporarily stores values for gestures in progress, auto-resets when gesture ends.          | ✅ Yes     |
 | `@Namespace`                    | Used for matched geometry effects and animations.                                           | ✅ Yes     |
 | `@NSApplicationDelegateAdaptor` | Registers a macOS app delegate class.                                                       | ✅ Yes     |
-| `@ObservedObject`               | Refers to an external `ObservableObject` instance.                                          | ❌ No      |
+| `@ObservableObject`             | Declares a class that can be **observed** by SwiftUI views              |
+| `@ObservedObject`               | View **uses** to an external `ObservableObject` instance.                                          | ❌ No      |
 | `@Published`                    | Marks properties inside an `ObservableObject` to notify views when values change.           | ✅ Yes     |
 | `@ScaledMetric`                 | Scales numbers based on the user’s Dynamic Type setting.                                    | ✅ Yes     |
 | `@SceneStorage`                 | Saves/restores small data amounts for state restoration.                                    | ✅ Yes     |
-| `@StateObject`                  | Stores **new** instances of reference types conforming to `ObservableObject`.               | ✅ Yes     |
+| `@StateObject`                  | Stores **new** instances of reference types conforming to `ObservableObject`. OR View **owns and manages** the object’s lifecycle | ✅ Yes     |
 | `@UIApplicationDelegateAdaptor` | Registers an app delegate class for iOS apps.                                               | ✅ Yes     |
 
 ##
