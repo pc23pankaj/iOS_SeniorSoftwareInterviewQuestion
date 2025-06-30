@@ -1,5 +1,7 @@
 In Swift, **protocols** define a blueprint of methods or properties, and conforming types **must implement** all required parts. But sometimes, you want to make **some protocol methods optional** — that’s called an **optional protocol**.
 
+## What is a Delegate?
+A delegate is an instance (usually a view controller or manager) that conforms to a protocol and is assigned to handle events or send back data from another class.
 ---
 
 ## ✅ What Is an Optional Protocol?
