@@ -19,7 +19,8 @@
 | `static var` | ✅ Yes  (read/write) | ✅ Yes               | ❌ No (needs protection in multithreaded code)   |
 
 
-
+## 🔁 Closure
+A closure is a self-contained block of functionality that can be passed around and used in your code. Closures can capture and store references to variables and constants from the context in which they’re defined.
 
 ## 🔁 Generic
 **Generic** allows you to write flexible, reusable functions and types that work with any data type.
