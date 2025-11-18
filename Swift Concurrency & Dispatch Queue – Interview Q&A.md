@@ -201,3 +201,92 @@ Reusable
 Monitored
 Perfect for tasks that are potentially long-running, UI-related, or need to be canceled or delayed with precision.
 
+
+
+
+
+**Method Dispatch** is the process Swift uses to determine which specific function implementation to execute when a method is called. The two main types are **Static Dispatch** and **Dynamic Dispatch**, representing a trade-off between performance and flexibility.
+
+-----
+
+## **1. Static Dispatch (Direct/Compile-Time)** 🚀
+
+Static dispatch means the exact function to be called is decided and its memory address is directly referenced at **compile time**.
+
+  * **Resolution:** **Compile Time.** The compiler embeds the function's memory address into the compiled code.
+  * **Performance:** It's the **fastest** form of dispatch because the program jumps directly to the function's memory location with **zero runtime overhead**. It also enables compiler optimizations like **inlining**.
+  * **Used For:**
+      * Methods on **value types** (**Structs** and **Enums**), as they do not support inheritance.
+      * Methods or classes marked with the **`final`** keyword (prevents overriding).
+      * Methods in **protocol extensions** that are *not* part of the protocol's required methods.
+
+### **Example**
+
+```swift
+struct Point { // Value Type
+    func getX() -> Int {
+        return 10
+    }
+}
+
+final class FixedEngine { // final Class
+    func start() { /* ... */ } // Static dispatch
+}
+
+let p = Point()
+p.getX() // Static Dispatch
+```
+
+-----
+
+## **2. Dynamic Dispatch (Table/Run-Time)** 🔄
+
+Dynamic dispatch means the function to be called is determined at **run time**, based on the actual type of the object, which is necessary to support polymorphism (method overriding).
+
+  * **Resolution:** **Run Time.** The program must perform a lookup.
+  * **Mechanism:** Swift primarily uses **Table Dispatch**.
+      * For **Classes**, it uses a **Virtual Table (V-Table)** of function pointers.
+      * For **Protocols**, it uses a **Witness Table** to map protocol requirements to the conforming type's implementation.
+  * **Performance:** It is **slower** than static dispatch due to the required runtime lookup (indirection) but provides maximum **flexibility**.
+  * **Used For:**
+      * **Overridable methods in classes** (those not marked `final`).
+      * Method calls made through a **Protocol** type (e.g., `let drawable: any Drawable = Circle()`).
+
+### **Example (V-Table for Classes)**
+
+```swift
+class Vehicle {
+    func start() {
+        print("Vehicle started.")
+    }
+}
+
+class Car: Vehicle {
+    override func start() { // Overridden method
+        print("Car engine roared!")
+    }
+}
+
+let myVehicle: Vehicle = Car()
+// Dynamic dispatch: The V-Table is checked at runtime to call Car's implementation.
+myVehicle.start() // Output: "Car engine roared!"
+```
+
+-----
+
+## **Message Dispatch (Objective-C Runtime)**
+
+A third, less common form of dispatch in Swift is **Message Dispatch**, which is the mechanism used by the Objective-C runtime. It's the **slowest** but most flexible, allowing features like method swizzling (swapping method implementations at runtime).
+
+  * It's used when a method is marked with **`@objc dynamic`**.
+  * The system searches the entire class hierarchy at runtime to find the method.
+
+## **Summary Comparison**
+
+| Feature | Static Dispatch | Dynamic Dispatch |
+| :--- | :--- | :--- |
+| **Resolution Time** | Compile Time | Run Time |
+| **Performance** | **Fastest** (Direct jump) | Slower (Runtime lookup) |
+| **Flexibility** | Low (No overriding) | **High** (Polymorphism) |
+| **Common Use** | Structs, Enums, `final` Classes/Methods | Overridable Class Methods, Protocol Requirements |
+
