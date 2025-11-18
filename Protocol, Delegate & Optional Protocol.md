@@ -116,3 +116,14 @@ class ImageDownloader: Downloader {
 ---
 
 Let me know if you want real-life use cases — like making a delegate optional in a view controller!
+
+
+## What Is an Associated Type? (Simple Definition)
+An associated type is a placeholder type used inside a protocol.
+It tells the protocol:
+
+protocol Container {
+    associatedtype Item
+    func add(_ item: Item)
+}
+
